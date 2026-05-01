@@ -1,0 +1,264 @@
+{
+  // oldsschool — game catalog
+  //
+  // 100% FOSS old-school games launched ephemerally via `nix run nixpkgs#<nixpkg>`.
+  // Engine-only entries (Doom/Quake/HoMM3 etc.) are deliberately excluded in v1
+  // to avoid the user-supplied-asset rabbit hole.
+  //
+  // `binary` overrides `nix run` with `nix shell -c <binary>` when the package's
+  // meta.mainProgram doesn't match what we want.
+
+  "games": [
+    // ── Arena FPS ─────────────────────────────────────────────────────────
+    {
+      "id": "xonotic",
+      "name": "Xonotic",
+      "nixpkg": "xonotic",
+      "category": "Arena FPS",
+      "blurb": "Fast-paced open-source arena shooter. Quake-like movement, modern graphics."
+    },
+    {
+      "id": "openarena",
+      "name": "OpenArena",
+      "nixpkg": "openarena",
+      "category": "Arena FPS",
+      "blurb": "Quake III Arena reimagined with original FOSS assets on the ioquake3 engine."
+    },
+    {
+      "id": "warsow",
+      "name": "Warsow",
+      "nixpkg": "warsow",
+      "category": "Arena FPS",
+      "blurb": "Cel-shaded fast-paced FPS with wallrunning, bunnyhopping, and trick-shots."
+    },
+    {
+      "id": "unvanquished",
+      "name": "Unvanquished",
+      "nixpkg": "unvanquished",
+      "category": "Arena FPS",
+      "blurb": "Asymmetric humans-vs-aliens FPS/RTS hybrid descended from Tremulous."
+    },
+    {
+      "id": "redeclipse",
+      "name": "Red Eclipse",
+      "nixpkg": "redeclipse",
+      "category": "Arena FPS",
+      "blurb": "Acrobatic parkour-flavored FPS on the Cube 2 engine."
+    },
+    {
+      "id": "bzflag",
+      "name": "BZFlag",
+      "nixpkg": "bzflag",
+      "category": "Arena FPS",
+      "blurb": "Multiplayer 3D tank battle. One of the oldest open-source online games."
+    },
+
+    // ── Strategy / 4X ─────────────────────────────────────────────────────
+    {
+      "id": "wesnoth",
+      "name": "Battle for Wesnoth",
+      "nixpkg": "wesnoth",
+      "category": "Strategy",
+      "blurb": "Turn-based fantasy strategy with a deep campaign library."
+    },
+    {
+      "id": "zeroad",
+      "name": "0 A.D.",
+      "nixpkg": "zeroad",
+      "binary": "0ad",
+      "category": "Strategy",
+      "blurb": "Historical RTS in the Age-of-Empires lineage. Ancient civilizations, real time."
+    },
+    {
+      "id": "widelands",
+      "name": "Widelands",
+      "nixpkg": "widelands",
+      "category": "Strategy",
+      "blurb": "Settlers-style economic RTS. Slow burn, deep supply chains."
+    },
+    {
+      "id": "freeciv",
+      "name": "Freeciv",
+      "nixpkg": "freeciv",
+      "binary": "freeciv-gtk3",
+      "category": "Strategy",
+      "blurb": "Open-source Civilization clone, three decades and still going."
+    },
+    {
+      "id": "unciv",
+      "name": "Unciv",
+      "nixpkg": "unciv",
+      "category": "Strategy",
+      "blurb": "Civ V reimplemented in Java/libGDX. Lightweight, faithful, FOSS."
+    },
+    {
+      "id": "openra",
+      "name": "OpenRA",
+      "nixpkg": "openra",
+      "category": "Strategy",
+      "blurb": "Modernized Command & Conquer / Red Alert / Dune 2000 engine with free mods."
+    },
+    {
+      "id": "hedgewars",
+      "name": "Hedgewars",
+      "nixpkg": "hedgewars",
+      "category": "Strategy",
+      "blurb": "Worms-style turn-based artillery. Hedgehogs, bazookas, baseball bats."
+    },
+
+    // ── Platformer / Karts / Arcade ───────────────────────────────────────
+    {
+      "id": "supertuxkart",
+      "name": "SuperTuxKart",
+      "nixpkg": "superTuxKart",
+      "category": "Karts",
+      "blurb": "Mascot kart racer with online multiplayer and a story mode."
+    },
+    {
+      "id": "supertux",
+      "name": "SuperTux",
+      "nixpkg": "supertux",
+      "category": "Platformer",
+      "blurb": "Side-scroller in the SMB lineage starring Tux."
+    },
+    {
+      "id": "extremetuxracer",
+      "name": "Extreme Tux Racer",
+      "nixpkg": "extremetuxracer",
+      "category": "Arcade",
+      "blurb": "Bellysliding penguin chasing herring down a mountain. Pure 2003 vibes."
+    },
+    {
+      "id": "frozen-bubble",
+      "name": "Frozen Bubble",
+      "nixpkg": "frozen-bubble",
+      "category": "Arcade",
+      "blurb": "Bust-a-Move / Puzzle Bobble clone. Soundtrack still slaps."
+    },
+    {
+      "id": "armagetronad",
+      "name": "Armagetron Advanced",
+      "nixpkg": "armagetronad",
+      "category": "Arcade",
+      "blurb": "Tron lightcycle multiplayer. Famous esports scene of its niche."
+    },
+    {
+      "id": "teeworlds",
+      "name": "Teeworlds",
+      "nixpkg": "teeworlds",
+      "category": "Arcade",
+      "blurb": "2D online platform shooter. Grappling hooks and rocket jumps."
+    },
+    {
+      "id": "ddnet",
+      "name": "DDraceNetwork",
+      "nixpkg": "ddnet",
+      "category": "Arcade",
+      "blurb": "Co-op race mod of Teeworlds with a huge community map pool."
+    },
+    {
+      "id": "pingus",
+      "name": "Pingus",
+      "nixpkg": "pingus",
+      "category": "Puzzle",
+      "blurb": "Lemmings clone with penguins. Saving idiots from themselves, since 1998."
+    },
+
+    // ── Space ─────────────────────────────────────────────────────────────
+    {
+      "id": "endless-sky",
+      "name": "Endless Sky",
+      "nixpkg": "endless-sky",
+      "category": "Space",
+      "blurb": "Open-world space trader/explorer. Spiritual successor to Escape Velocity."
+    },
+    {
+      "id": "naev",
+      "name": "Naev",
+      "nixpkg": "naev",
+      "category": "Space",
+      "blurb": "2D space exploration RPG with combat, trade, and faction politics."
+    },
+    {
+      "id": "pioneer",
+      "name": "Pioneer",
+      "nixpkg": "pioneer",
+      "category": "Space",
+      "blurb": "Frontier: Elite II–inspired space sim. Newtonian flight, full Milky Way."
+    },
+
+    // ── Sandbox / Tycoon ──────────────────────────────────────────────────
+    {
+      "id": "minetest",
+      "name": "Minetest (Luanti)",
+      "nixpkg": "minetest",
+      "category": "Sandbox",
+      "blurb": "Voxel sandbox engine with thousands of mods. Now rebranded Luanti."
+    },
+    {
+      "id": "mindustry",
+      "name": "Mindustry",
+      "nixpkg": "mindustry",
+      "category": "Tower defense",
+      "blurb": "Factory-meets-tower-defense. Conveyor belts feeding turrets feeding chaos."
+    },
+    {
+      "id": "openttd",
+      "name": "OpenTTD",
+      "nixpkg": "openttd",
+      "category": "Tycoon",
+      "blurb": "Open Transport Tycoon Deluxe — ships, trains, planes, profit graphs."
+    },
+    {
+      "id": "openrct2",
+      "name": "OpenRCT2",
+      "nixpkg": "openrct2",
+      "category": "Tycoon",
+      "blurb": "RollerCoaster Tycoon 2 reimplementation. Drowning guests is canon."
+    },
+
+    // ── Roguelikes ────────────────────────────────────────────────────────
+    {
+      "id": "nethack",
+      "name": "NetHack",
+      "nixpkg": "nethack",
+      "category": "Roguelike",
+      "blurb": "The original DevTeam thinks of everything. Yet Another Stupid Death."
+    },
+    {
+      "id": "crawl",
+      "name": "Dungeon Crawl Stone Soup",
+      "nixpkg": "crawl",
+      "category": "Roguelike",
+      "blurb": "Modern, balanced, fast-paced roguelike. Forks of forks of Linley's Crawl."
+    },
+    {
+      "id": "cataclysm-dda",
+      "name": "Cataclysm: Dark Days Ahead",
+      "nixpkg": "cataclysm-dda",
+      "category": "Roguelike",
+      "blurb": "Post-apocalyptic survival roguelike. Build a deathmobile, fight zombies."
+    },
+    {
+      "id": "angband",
+      "name": "Angband",
+      "nixpkg": "angband",
+      "category": "Roguelike",
+      "blurb": "Dive 100 levels to defeat Morgoth. Tolkien-flavored Moria descendant."
+    },
+    {
+      "id": "tome4",
+      "name": "Tales of Maj'Eyal",
+      "nixpkg": "tome4",
+      "category": "Roguelike",
+      "blurb": "Polished roguelike RPG with class-driven build variety and a real plot."
+    },
+    {
+      "id": "dwarf-fortress",
+      "name": "Dwarf Fortress",
+      "nixpkg": "dwarf-fortress",
+      "category": "Roguelike",
+      "blurb": "Losing is fun. Generative geology, dwarven psychology, and elephant rampages."
+    }
+  ]
+}

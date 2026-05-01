@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="clr-namespace:OldsSchool.App.Models"
+        x:Class="OldsSchool.App.MainWindow"
+        Title="oldsschool" Width="1240" Height="820">
+  <DockPanel LastChildFill="True">
+
+    <Border DockPanel.Dock="Top" Padding="20,16" Background="#181825">
+      <StackPanel Orientation="Horizontal" Spacing="14">
+        <TextBlock Text="oldsschool"
+                   FontSize="26" FontWeight="Bold"
+                   Foreground="#cdd6f4" VerticalAlignment="Center" />
+        <TextBlock Text="ephemeral nix-native retro arcade"
+                   FontSize="12" Opacity="0.55"
+                   Foreground="#cdd6f4" VerticalAlignment="Center" />
+        <TextBox x:Name="SearchBox" Watermark="search…" Width="280"
+                 VerticalAlignment="Center" />
+        <ComboBox x:Name="CategoryBox" Width="180"
+                  PlaceholderText="all categories"
+                  VerticalAlignment="Center" />
+        <TextBlock x:Name="StatusText" Foreground="#a6e3a1"
+                   VerticalAlignment="Center" Margin="20,0,0,0" />
+      </StackPanel>
+    </Border>
+
+    <ScrollViewer>
+      <ItemsControl x:Name="GameList" Margin="16">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="models:Game">
+            <Button Width="290" Height="170" Margin="6"
+                    Padding="14"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Top"
+                    Tag="{Binding}"
+                    Click="OnGameClick">
+              <StackPanel Spacing="6">
+                <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold"
+                           Foreground="#cdd6f4" />
+                <TextBlock Text="{Binding Category}" FontSize="11"
+                           Foreground="#fab387" Opacity="0.85" />
+                <TextBlock Text="{Binding Blurb}" TextWrapping="Wrap"
+                           FontSize="12" Foreground="#bac2de"
+                           Margin="0,6,0,0" />
+                <TextBlock Text="{Binding NixCommand}" FontSize="10"
+                           Foreground="#74c7ec" Opacity="0.7"
+                           FontFamily="monospace" Margin="0,4,0,0" />
+              </StackPanel>
+            </Button>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+  </DockPanel>
+</Window>
