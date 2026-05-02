@@ -9,7 +9,7 @@ Click a game. It runs. Nothing installs.
 - **No emulation.** Native FOSS games and source ports only — no DOSBox, MAME, RetroArch.
 - **No containers.** No Docker, no Flatpak, no AppImage.
 - **No orchestration.** No Kubernetes, no Compose, no agents-of-agents.
-- **No permanent install.** Game launches use `nix run nixpkgs#<pkg>` (or `nix shell -c`). Store paths are GC'able. The catalog is a JSONC file.
+- **No permanent install.** Game launches use `nix run --impure nixpkgs#<pkg>` (or `nix shell --impure -c`). Store paths are GC'able. The catalog is a JSONC file.
 
 The dashboard itself is .NET 9 + [Avalonia](https://avaloniaui.net) (cross-platform XAML UI, native on Linux).
 
@@ -23,15 +23,42 @@ Deliberately minimal:
 
 Nix flake provides `dotnet-sdk_9`, `fontconfig`, `icu`.
 
-## Run it
+## Prerequisites
+
+You need [Nix](https://nixos.org/download) with flakes enabled, plus a graphical session (X11 or Wayland — the launcher won't render over plain SSH without forwarding).
+
+Enable flakes if you haven't already:
+
+- **NixOS** — add to `configuration.nix`:
+  ```nix
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  ```
+- **[Determinate Nix](https://determinate.systems/nix-installer/)** (recommended for non-NixOS Linux + macOS) — flakes are on by default.
+- **Upstream Nix installer** — add to `~/.config/nix/nix.conf` (or `/etc/nix/nix.conf`):
+  ```
+  experimental-features = nix-command flakes
+  ```
+
+Supported systems: `x86_64-linux`, `aarch64-linux`, `x86_64-darwin`, `aarch64-darwin`. Tested primarily on Linux/X11.
+
+## Install, build & run
 
 ```sh
-nix develop                    # drops you in a shell with dotnet-sdk_9
+git clone https://github.com/ncguilbeault/oldsschool.git
+cd oldsschool
+
+nix develop                       # enters dev shell: dotnet-sdk_9, fontconfig, icu
 cd src/OldsSchool.App
-dotnet run
+dotnet run                        # opens the launcher window
 ```
 
-First launch of any game pulls the package into `/nix/store` (cached afterwards).
+First click on a game fetches the package into `/nix/store` (subsequent launches are instant). The launcher spawns games with `--impure` + `NIXPKGS_ALLOW_UNFREE=1` so freeware classics (e.g. Dwarf Fortress) launch without a manual override.
+
+To wipe every game and dev artifact you've accumulated:
+
+```sh
+nix-collect-garbage -d
+```
 
 ## Catalog
 
@@ -48,8 +75,10 @@ Edit [`games.jsonc`](games.jsonc). Each entry:
 }
 ```
 
-v1 ships ~34 pure-FOSS titles. Engine-only ports (gzdoom, vcmi, devilutionx, …) are
-deliberately excluded — they need user-supplied original assets.
+v1 ships ~34 entries — predominantly pure FOSS, plus a small whitelist of freeware
+classics (Dwarf Fortress is the notable example). Engine-only ports
+(gzdoom, vcmi, devilutionx, …) are deliberately excluded — they need
+user-supplied original assets.
 
 ## Roadmap
 
